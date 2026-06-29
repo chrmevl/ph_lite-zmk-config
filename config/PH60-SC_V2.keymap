@@ -1,0 +1,43 @@
+/*
+ * Copyright (c) 2024 The ZMK Contributors
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/studio.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+                // Row 1
+                &kp ESC  &kp N1   &kp N2   &kp N3   &kp N4   &kp N5   &kp N6   &kp N7   &kp N8   &kp N9   &kp N0   &kp BSPC
+                // Row 2
+                &kp TAB  &kp Q    &kp W    &kp E    &kp R    &kp T    &kp Y    &kp U    &kp I    &kp O    &kp P    &kp LBKT &kp RBKT &kp BSLH
+                // Row 3
+                &kp CAPS &kp A    &kp S    &kp D    &kp F    &kp G    &kp H    &kp J    &kp K    &kp L    &kp SEMI &kp SQT  &kp RET
+                // Row 4
+                &kp LSHFT &kp NUBS &kp Z    &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp COMMA &kp DOT  &kp SLASH &kp RSHFT &kp DEL
+                // Row 5
+                &kp LCTRL &kp LGUI &kp LALT &kp SPACE &kp RALT &kp MO(1) &kp RGUI &kp RCTRL
+            >;
+        };
+
+        fn_layer {
+            bindings = <
+                // Row 1
+                &kp GRV  &kp F1   &kp F2   &kp F3   &kp F4   &kp F5   &kp F6   &kp F7   &kp F8   &kp F9   &kp F10  &kp F11
+                // Row 2
+                &kp TRNS &kp TRNS &kp UP   &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp INS  &kp HOME &kp PGUP &kp TRNS &kp TRNS &kp F12
+                // Row 3
+                &kp TRNS &kp LEFT &kp DOWN &kp RIGHT&kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp END  &kp PGDN &kp TRNS &kp TRNS
+                // Row 4
+                &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS
+                // Row 5
+                &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS &kp TRNS
+            >;
+        };
+    };
+};
