@@ -1,0 +1,172 @@
+/*
+ * Copyright (c) 2025 Team PHDesign
+ * SPDX-License-Identifier: MIT
+ *
+ * Keymap for PH-Lite board + PH60-Multi_V2 shield (ANSI)
+ * Uses physical-layout position map (66 positions: 0-65)
+ * Matrix: 15 cols x 5 rows, col2row diodes
+ * Supports: ANSI / ISO / WK / WKL / HHKB
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
+
+/ {
+	behaviors {
+		/* Macro: Clear current BT profile on tap */
+		bt_clear_current_macro: bt_clear_current_macro {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&bt BT_CLR>;
+		};
+
+		/* Macro: Clear all BT profiles on hold */
+		bt_clear_all_macro: bt_clear_all_macro {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&bt BT_CLR_ALL>;
+		};
+
+		/* Hold-tap: clear current (tap) / clear all (hold), 3s hold */
+		bt_clear_holdtap: bt_clear_holdtap {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "tap-preferred";
+			tapping-term-ms = <3000>;
+			bindings = <&bt_clear_all_macro>, <&bt_clear_current_macro>;
+		};
+
+		/* Default mod-tap — hold-preferred, 200ms */
+		ht_def: ht_def {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "hold-preferred";
+			tapping-term-ms = <200>;
+			bindings = <&kp>, <&kp>;
+		};
+
+		/* Fast mod-tap — balanced, 150ms, quick-tap 100ms */
+		ht_fast: ht_fast {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "balanced";
+			tapping-term-ms = <150>;
+			quick-tap-ms = <100>;
+			bindings = <&kp>, <&kp>;
+		};
+
+		/* Slow layer-tap — tap-preferred, 280ms, retro-tap */
+		ht_slow: ht_slow {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "tap-preferred";
+			tapping-term-ms = <280>;
+			retro-tap;
+			bindings = <&mo>, <&kp>;
+		};
+
+		/* User slots — default hold-preferred 200ms, tweak in Studio */
+		ht_user1: ht_user1 {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "hold-preferred";
+			tapping-term-ms = <200>;
+			bindings = <&kp>, <&kp>;
+		};
+
+		ht_user2: ht_user2 {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "hold-preferred";
+			tapping-term-ms = <200>;
+			bindings = <&kp>, <&kp>;
+		};
+
+		ht_user3: ht_user3 {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "hold-preferred";
+			tapping-term-ms = <200>;
+			bindings = <&kp>, <&kp>;
+		};
+
+		ht_user4: ht_user4 {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "hold-preferred";
+			tapping-term-ms = <200>;
+			bindings = <&kp>, <&kp>;
+		};
+	};
+
+	keymap {
+		compatible = "zmk,keymap";
+
+		/* ==========================
+		 * Layer 0: Base (ANSI 60%)
+		 * ==========================
+		 * Row 0 (0-14):   ESC  1    2    3    4    5    6    7    8    9    0    -    =    BSPC DEL
+		 * Row 1 (15-28):  TAB  Q    W    E    R    T    Y    U    I    O    P    [    ]    \
+		 * Row 2 (29-41):  CAPS A    S    D    F    G    H    J    K    L    ;    '    ENTER
+		 * Row 3 (42-55):  LSFT _    Z    X    C    V    B    N    M    ,    .    /    RSFT _pad
+		 * Row 4 (56-65):  LCTL LGUI LALT SPC  SPC  SPC  RALT MO(1) LEFT RGUI RCTL
+		 */
+		default_layer {
+			display-name = "Base";
+			bindings = <
+	&kp ESC		&kp N1		&kp N2		&kp N3		&kp N4		&kp N5		&kp N6		&kp N7		&kp N8		&kp N9		&kp N0		&kp MINUS	&kp EQUAL	&kp BSPC	&kp DEL
+	&kp TAB		&kp Q		&kp W		&kp E		&kp R		&kp T		&kp Y		&kp U		&kp I		&kp O		&kp P		&kp LBKT	&kp RBKT	&kp BSLH
+	&kp CAPS	&kp A		&kp S		&kp D		&kp F		&kp G		&kp H		&kp J		&kp K		&kp L		&kp SEMI	&kp SQT	&kp ENTER
+	&kp LSHFT	&trans		&kp Z		&kp X		&kp C		&kp V		&kp B		&kp N		&kp M		&kp COMMA	&kp DOT		&kp FSLH	&kp RSHFT	&kp RSHFT
+	&kp LCTRL	&kp LGUI	&kp LALT	&kp SPACE	&kp SPACE	&kp SPACE	&kp RALT	&lt 1 LEFT	&kp RGUI	&kp RCTRL
+			>;
+		};
+
+		/* ==========================
+		 * Layer 1: Function
+		 * ==========================
+		 * Top row: GRAVE->F1-F10, F11, F12, PSCR, SLCK, PAUS
+		 * WASD cluster: navigation (UP) and volume
+		 */
+		function_layer {
+			display-name = "Function";
+			bindings = <
+	&kp GRAVE	&kp F1		&kp F2		&kp F3		&kp F4		&kp F5		&kp F6		&kp F7		&kp F8		&kp F9		&kp F10		&kp F11		&kp F12		&kp PSCR	&kp SLCK
+	&trans		&trans		&kp UP		&trans		&sys_reset	&trans		&trans		&trans		&trans		&trans		&trans		&kp PSCR	&kp SLCK	&kp PAUS
+	&trans		&kp LEFT	&kp DOWN	&kp RIGHT	&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans
+	&trans		&trans		&trans		&trans		&trans		&trans		&mo 2		&trans		&trans		&trans		&trans		&trans		&trans		&trans
+	&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans
+			>;
+		};
+
+		/* ==========================
+		 * Layer 2: Bluetooth
+		 * ==========================
+		 * BT profile select, output toggle, bootloader
+		 */
+		bluetooth_layer {
+			display-name = "Bluetooth";
+			bindings = <
+	&trans		&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4	&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans
+	&out OUT_TOG	&trans		&trans		&trans		&bootloader	&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans
+	&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans
+	&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans
+	&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans		&trans
+			>;
+		};
+
+		/* Reserved layers for ZMK Studio runtime editing */
+		extra1 {
+			display-name = "Extra 1";
+			status = "reserved";
+		};
+
+		extra2 {
+			display-name = "Extra 2";
+			status = "reserved";
+		};
+	};
+};
