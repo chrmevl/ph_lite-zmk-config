@@ -157,15 +157,5 @@
 &trans       &trans        &trans                                     &trans                                      &trans             &trans             &trans                                &trans
             >;
         };
-
-        extra1 {
-            display-name = "Extra 1";
-            status = "reserved";
-        };
-
-        extra2 {
-            display-name = "Extra 2";
-            status = "reserved";
-        };
     };
 };
