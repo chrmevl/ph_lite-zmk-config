@@ -180,11 +180,11 @@
 &trans                     &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans          &trans
 &trans       &trans        &trans                                    &trans                        &trans  &trans  &trans                  &trans
 #else
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans       &trans
-&trans        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans       &trans
-&trans &trans &trans             &trans             &trans &trans &trans                  &trans
+&trans       &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans &trans
+&trans       &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans &trans
+&trans       &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans         &trans
+&trans       &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans         &trans
+&trans       &trans        &trans                                    &trans                        &trans  &trans  &trans                 &trans
 #endif
             >;
         };
