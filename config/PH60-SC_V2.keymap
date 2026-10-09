@@ -24,7 +24,7 @@
 / {
 
     behaviors {
-        #if IS_ENABLED(CONFIG_ZMK_BT)
+        #if IS_ENABLED(CONFIG_ZMK_BLE)
         // Macro to clear current BT profile (tap)
         bt_clear_current_macro: bt_clear_current_macro {
             compatible = "zmk,behavior-macro";
@@ -173,7 +173,7 @@
         bluetooth_layer {
             display-name = "Bluetooth";
             bindings = <
-#if IS_ENABLED(CONFIG_ZMK_BT)
+#if IS_ENABLED(CONFIG_ZMK_BLE)
 &trans       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bt_clear_holdtap 0 0
 &out OUT_TOG &trans        &trans        &trans        &bootloader   &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans       &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans          &soft_off
