@@ -48,7 +48,7 @@
             bindings = <&bt_clear_all_macro>, <&bt_clear_current_macro>;
         };
 
-        #endif = // Default mod-tap — hold-preferred, 200ms;
+        #endif = // Default mod-tap — hold-preferred, 200ms;;
 
         ht_def: ht_def {
             compatible = "zmk,behavior-hold-tap";
@@ -180,11 +180,11 @@
         bluetooth_layer {
             display-name = "Mo1";
             bindings = <
-&kp GRAVE        &kp C_PLAY_PAUSE   &mkp MB1  &mkp MB2       &mkp MB3   &mkp MB4  &mkp MB5  &trans          &trans          &trans           &trans         &trans       &trans  &trans
-&kp C_MUTE       &kp PAGE_UP        &kp UP    &kp PAGE_DOWN  &kp F5     &trans    &trans    &trans          &mmv MOVE_UP    &trans           &trans         &trans       &trans  &trans
-&trans           &kp LEFT           &kp DOWN  &kp RIGHT      &kp DEL    &trans    &trans    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans         &kp PAGE_UP  &trans
-&kp C_VOLUME_UP                     &kp HOME  &kp END        &kp ENTER  &trans    &trans    &trans          &trans          &kp HOME         &kp PAGE_DOWN  &kp END      &trans
-&kp CAPSLOCK     &kp C_VOLUME_DOWN  &kp M                                         &kp BSPC                                                   &mkp MB1       &mkp MB2     &trans  &trans
+&kp GRAVE        &kp C_PLAY_PAUSE   &mkp MB1  &mkp MB2       &mkp MB3   &mkp MB4  &mkp MB5  &trans          &trans          &trans            &trans         &trans        &trans        &trans
+&kp C_MUTE       &kp PAGE_UP        &kp UP    &kp PAGE_DOWN  &kp F5     &trans    &trans    &trans          &mmv MOVE_UP    &kp K_PLAY_PAUSE  &kp C_MUTE     &kp C_VOL_UP  &kp C_VOL_DN  &trans
+&trans           &kp LEFT           &kp DOWN  &kp RIGHT      &kp DEL    &trans    &trans    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT   &trans         &kp PAGE_UP   &trans
+&kp C_VOLUME_UP                     &kp HOME  &kp END        &kp ENTER  &trans    &trans    &trans          &trans          &kp HOME          &kp PAGE_DOWN  &kp END       &trans
+&kp CAPSLOCK     &kp C_VOLUME_DOWN  &kp M                                         &kp BSPC                                                    &mkp MB1       &mkp MB2      &trans        &trans
             >;
         };
 
